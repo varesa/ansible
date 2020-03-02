@@ -264,13 +264,13 @@ def main():
             cmd += " --tags '%s'" % ','.join(p['tags'])
         if p['certname']:
             cmd += " --certname='%s'" % p['certname']
-        if module.check_mode:
-            cmd += " --noop"
         if p['use_srv_records'] is not None:
             if not p['use_srv_records']:
                 cmd += " --no-use_srv_records"
             else:
                 cmd += " --use_srv_records"
+        if module.check_mode:
+            cmd += " --noop"
         elif 'noop' in p:
             if p['noop']:
                 cmd += " --noop"
